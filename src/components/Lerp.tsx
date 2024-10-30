@@ -102,7 +102,7 @@ const Lerp = () => {
     }
 
     const parameters = {
-      count: 1000,
+      count: 500,
       size: 0.02,
     };
 

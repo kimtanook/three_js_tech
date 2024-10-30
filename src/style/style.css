@@ -1,9 +1,10 @@
 .menu {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: row;
   gap: 1rem;
   margin: 1rem;
+  z-index: 100;
 }
 .menu_button {
   width: 4rem;

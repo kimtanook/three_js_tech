@@ -10,6 +10,9 @@ function Menu({setName}: {setName: any}) {
       <button className="menu_button" onClick={() => setName("lerp")}>
         lerp
       </button>
+      <button className="menu_button" onClick={() => setName("raycaster")}>
+        raycaster
+      </button>
     </div>
   );
 }
