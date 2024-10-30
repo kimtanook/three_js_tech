@@ -1,0 +1,39 @@
+.menu {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 1rem;
+}
+.menu_button {
+  width: 4rem;
+  height: 2rem;
+  background-color: black;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.sphere_button_wrap {
+  position: absolute;
+  top: 20rem;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sphere_button {
+  width: 4rem;
+  height: 2rem;
+  background-color: black;
+  border-radius: 0.4rem;
+  border: 1px solid white;
+  color: white;
+}
+
+.lerp_wrap {
+  height: 200vh;
+}
+.lerp_container {
+  position: fixed;
+}
