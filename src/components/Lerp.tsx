@@ -27,7 +27,7 @@ const Lerp = () => {
       const originalZ = positions[i3 + 2];
 
       // 랜덤한 거리 생성
-      const randomDistance = 10; // 최대 퍼지는 거리
+      const randomDistance = 20; // 최대 퍼지는 거리
 
       if (scrollPercent < 50) {
         // 스크롤이 0%에서 50%까지
@@ -90,6 +90,8 @@ const Lerp = () => {
       0.1,
       1000
     );
+    camera.position.x = 5;
+    camera.position.y = 5;
     camera.position.z = 5;
 
     const renderer = new THREE.WebGLRenderer({antialias: true});
@@ -102,7 +104,7 @@ const Lerp = () => {
     }
 
     const parameters = {
-      count: 500,
+      count: 1000,
       size: 0.02,
     };
 

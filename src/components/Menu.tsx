@@ -13,6 +13,9 @@ function Menu({setName}: {setName: any}) {
       <button className="menu_button" onClick={() => setName("raycaster")}>
         raycaster
       </button>
+      <button className="menu_button" onClick={() => setName("loader")}>
+        loader
+      </button>
     </div>
   );
 }

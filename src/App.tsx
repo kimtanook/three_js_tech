@@ -1,5 +1,6 @@
 import {useState} from "react";
-import Lerp from "./components/lerp";
+import Lerp from "./components/Lerp";
+import Loader from "./components/Loader";
 import Menu from "./components/Menu";
 import Move from "./components/Move";
 import Raycaster from "./components/Raycaster";
@@ -15,6 +16,7 @@ function App() {
       {name === "cannon" && <Move />}
       {name === "lerp" && <Lerp />}
       {name === "raycaster" && <Raycaster />}
+      {name === "loader" && <Loader />}
     </>
   );
 }

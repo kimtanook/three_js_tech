@@ -56,10 +56,13 @@ const Raycaster = () => {
 
     cubes.forEach((cube) => scene.add(cube)); // 모든 큐브를 장면에 추가
 
+    // 마우스가 브라우저 위에서 움직일 때 이벤트 (클릭 후 드래그 이동 x)
     const onMouseMove = (event: any) => {
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1; // 마우스 X 좌표 정규화
       mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1; // 마우스 Y 좌표 정규화
-      raycaster.current.setFromCamera(mouse.current, camera); // 레이캐스터의 시작점 설정
+      // 레이캐스터의 시작점 설정 (첫번째 인자 : 광선이 나아가는 방향, 두번째 인자 : 광선 시작점)
+      // 기본적으로 setFromCamera은 마우스와 카메라를 인자로 받음 (첫번째 인자 : vector2(2D) 좌표, 두번째 인자 : 카메라 인스턴스)
+      raycaster.current.setFromCamera(mouse.current, camera);
 
       if (isDragging.current && dragObject.current) {
         // 드래그 중인 경우
@@ -77,6 +80,7 @@ const Raycaster = () => {
     const onMouseDown = () => {
       const intersects = raycaster.current.intersectObjects(cubes); // 큐브와의 교차점 검사
       if (intersects.length > 0) {
+        console.log("교차점이 발견된 큐브!! : ", intersects);
         // 교차점 발견 시
         controls.enabled = false; // 카메라 컨트롤 비활성화
         pIntersect.current.copy(intersects[0].point); // 첫 번째 교차점 위치 복사
