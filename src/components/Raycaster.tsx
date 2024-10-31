@@ -58,21 +58,25 @@ const Raycaster = () => {
 
     // 마우스가 브라우저 위에서 움직일 때 이벤트 (클릭 후 드래그 이동 x)
     const onMouseMove = (event: any) => {
+      console.log("마우스 움직이는 중");
+
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1; // 마우스 X 좌표 정규화
       mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1; // 마우스 Y 좌표 정규화
       // 레이캐스터의 시작점 설정 (첫번째 인자 : 광선이 나아가는 방향, 두번째 인자 : 광선 시작점)
       // 기본적으로 setFromCamera은 마우스와 카메라를 인자로 받음 (첫번째 인자 : vector2(2D) 좌표, 두번째 인자 : 카메라 인스턴스)
       raycaster.current.setFromCamera(mouse.current, camera);
-
       if (isDragging.current && dragObject.current) {
         // 드래그 중인 경우
         raycaster.current.ray.intersectPlane(
-          plane.current,
-          planeIntersect.current // 레이와 평면의 교차점 계산
+          plane.current, // 교차할 평면 정의
+          planeIntersect.current // 레이와 평면의 교차점을 계산하여 planeIntersect.current에 저장
         );
+
+        // 계산된 planeIntersect.current 값을 드래그 중인 dragObject.current의 position에 할당
+        // addVectors : 두 개의 벡터를 더한 결과를 반환, 새로운 벡터를 생성하여 반환하는 대신, 첫 번째 벡터를 업데이트
         dragObject.current.position.addVectors(
           planeIntersect.current,
-          shift.current // 드래그 중인 객체 위치 업데이트
+          shift.current // 드래그 시작 시 계산된 객체 위치의 변화를 저장하는 벡터
         );
       }
     };
@@ -88,6 +92,8 @@ const Raycaster = () => {
           pNormal.current,
           pIntersect.current // 평면 설정
         );
+
+        // 없으면 바닥에 안 붙어있음.
         shift.current.subVectors(
           intersects[0].object.position,
           intersects[0].point // 드래그 시 객체 위치 변화 계산
